@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+:root {
+  --background: #04050d;
+  --foreground: #e7ecff;
+  --panel: #0a0e20;
+  --panel-2: #0d1228;
+  --line: #1c2450;
+  --muted: #8a93bd;
+  --neon-cyan: #22d3ee;
+  --neon-magenta: #e879f9;
+  --neon-lime: #a3e635;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-panel: var(--panel);
+  --color-panel2: var(--panel-2);
+  --color-line: var(--line);
+  --color-muted: var(--muted);
+  --color-neon: var(--neon-cyan);
+  --color-neon2: var(--neon-magenta);
+  --color-neon3: var(--neon-lime);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jet), ui-monospace, "JetBrains Mono", monospace;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(34, 211, 238, 0.08), transparent 60%),
+    radial-gradient(1000px 500px at 10% 110%, rgba(232, 121, 249, 0.07), transparent 60%),
+    var(--background);
+  color: var(--foreground);
+  overflow: hidden;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #273066 transparent;
+}
+*::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(34, 211, 238, 0.35), rgba(232, 121, 249, 0.35));
+  border-radius: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.neon-text {
+  text-shadow: 0 0 6px currentColor, 0 0 24px color-mix(in srgb, currentColor 55%, transparent);
+}
+
+/* CodeMirror neon treatment: transparent bg + glowing code glyphs */
+.cm-neon .cm-content {
+  text-shadow: 0 0 8px rgba(96, 165, 250, 0.28), 0 0 22px rgba(34, 211, 238, 0.12);
+  font-variant-ligatures: none;
+}
+.cm-neon .cm-line {
+  padding: 0 8px;
+}
+
+.glass {
+  background: color-mix(in srgb, var(--panel) 78%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.82;
+  }
+}
+.flicker {
+  animation: flicker 2.4s ease-in-out infinite;
+}
